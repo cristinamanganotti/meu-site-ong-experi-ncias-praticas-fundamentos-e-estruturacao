@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --cor-primaria: #2E7D32;
+  --cor-primaria-clara: #4CAF50;
+  --cor-primaria-escura: #1B5E20;
+
+  --cor-secundaria: #FFB300;
+  --cor-secundaria-clara: #FFD54F;
+
+  --cor-neutra-escura: #212121;
+  --cor-neutra-media: #666666;
+  --cor-neutra-clara: #F5F5F5;
+  --cor-branca: #FFFFFF;
+
+  --fonte-titulo: 'Work Sans', sans-serif;
+  --fonte-texto: 'Open Sans', sans-serif;
+
+  --tamanho-xs: 14px;
+  --tamanho-sm: 16px;
+  --tamanho-md: 24px;
+  --tamanho-lg: 36px;
+  --tamanho-xl: 48px;
+
+  --espaco-1: 8px;
+  --espaco-2: 16px;
+  --espaco-3: 24px;
+  --espaco-4: 32px;
+  --espaco-5: 40px;
+  --espaco-6: 48px;
+  --espaco-7: 64px;
+  --espaco-8: 80px;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: var(--tamanho-sm);
+  line-height: 1.6;
+  color: var(--cor-neutra-escura);
+  background-color: var(--cor-branca);
+}
+
+/* TÍTULOS */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-neutra-escura);
+}
+
+h1 {
+  font-size: var(--tamanho-lg);
+}
+
+h2 {
+  font-size: var(--tamanho-lg);
+}
+
+h3 {
+  font-size: var(--tamanho-md);
+}
+
+h4 {
+  font-size: var(--tamanho-md);
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+  padding: var(--espaco-4) 8%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  gap: var(--espaco-4);
+}
+
+/* Título "Projetos da ONG" */
+header > h1 {
+  grid-column: 1 / 8;
+  margin: 0;
+  color: var(--cor-primaria-escura);
+  white-space: nowrap;
+}
+
+.logo {
+  grid-column: 1 / 6;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: var(--tamanho-lg);
+  color: var(--cor-primaria-escura);
+}
+
+.logo p {
+  margin: 0;
+  text-align: left;
+  color: var(--cor-neutra-media);
+}
+
+/* MENU */
+nav {
+  grid-column: 8 / 13;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--espaco-3);
+}
+
+.menu-hamburguer {
+  display: none;
+  border: none;
+  background: none;
+  font-size: 32px;
+  color: var(--cor-primaria-escura);
+  cursor: pointer;
+}
+
+nav a {
+  color: var(--cor-primaria-escura);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: var(--cor-primaria-clara);
+  text-decoration: underline;
+}
+
+/* =========================
+   PÁGINA INICIAL
+========================= */
+
+.caixa {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--espaco-7) 4%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-7);
+  align-items: center;
+}
+
+.caixa-text {
+  grid-column: 1 / 7;
+  text-align: left;
+}
+
+.caixa-text span {
+  color: var(--cor-primaria);
+  font-size: var(--tamanho-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.caixa-text h2 {
+  margin: var(--espaco-2) 0 var(--espaco-3);
+  font-size: var(--tamanho-xl);
+  line-height: 1.1;
+  color: var(--cor-primaria-escura);
+}
+
+.caixa-text p {
+  max-width: 550px;
+  text-align: left;
+}
+
+.caixa-image {
+  grid-column: 7 / 13;
+}
+
+.caixa-image img {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* BOTÃO */
+.btn {
+  display: inline-block;
+  margin-top: var(--espaco-4);
+  padding: var(--espaco-2) var(--espaco-3);
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--espaco-1);
+}
+
+.btn:hover {
+  background-color: var(--cor-primaria-escura);
+}
+
+/* =========================
+   SOBRE A ONG
+========================= */
+
+.sobre {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--espaco-6) 4%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-7);
+}
+
+.sobre-titulo {
+  grid-column: 1 / 5;
+}
+
+.sobre-titulo span {
+  font-size: var(--tamanho-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cor-primaria);
+}
+
+.sobre-titulo h2 {
+  margin: var(--espaco-2) 0 0;
+  font-size: var(--tamanho-lg);
+  color: var(--cor-primaria-escura);
+}
+
+.sobre-texto {
+  grid-column: 5 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+}
+
+.sobre-texto p {
+  text-align: left;
+}
+
+/* =========================
+   CONTATO
+========================= */
+
+.contato {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--espaco-5) 4%;
+  text-align: center;
+}
+
+.contato h4 {
+  margin: 0 0 var(--espaco-2);
+  color: var(--cor-primaria-escura);
+}
+
+.contato p {
+  margin-bottom: var(--espaco-1);
+}
+
+/* =========================
+   PROJETOS / INICIATIVAS
+========================= */
+
+.iniciativas {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--espaco-6) 4%;
+}
+
+.iniciativas-titulo {
+  margin-bottom: var(--espaco-5);
+  text-align: center;
+}
+
+.iniciativas-titulo span {
+  font-size: var(--tamanho-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cor-primaria);
+}
+
+.iniciativas-titulo h2 {
+  margin: var(--espaco-2) 0 0;
+  text-align: center;
+  font-size: var(--tamanho-lg);
+  color: var(--cor-primaria-escura);
+  white-space: nowrap;
+}
+
+.iniciativas > img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto var(--espaco-5);
+}
+
+/* GRID DE 12 COLUNAS */
+.iniciativas-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-3);
+  align-items: stretch;
+}
+
+/* CARDS */
+.card {
+  grid-column: span 4;
+  padding: var(--espaco-4);
+  border: 1px solid var(--cor-neutra-media);
+  background-color: var(--cor-branca);
+  border-radius: var(--espaco-1);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: var(--espaco-2);
+  text-align: left;
+  font-family: var(--fonte-titulo);
+  font-size: var(--tamanho-md);
+  color: var(--cor-primaria-escura);
+}
+
+.card p {
+  text-align: left;
+  color: var(--cor-neutra-escura);
+}
+
+/* =========================
+   CADASTRO
+========================= */
+
+.cadastro {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--espaco-6) 4%;
+}
+
+.cadastro-titulo {
+  margin-bottom: var(--espaco-5);
+  text-align: center;
+}
+
+.cadastro-titulo span {
+  display: inline-block;
+  padding: var(--espaco-1) var(--espaco-2);
+  margin-bottom: var(--espaco-2);
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  font-family: var(--fonte-titulo);
+  font-size: var(--tamanho-xs);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 20px;
+}
+
+.cadastro-titulo h2 {
+  margin: 0 0 var(--espaco-2);
+  font-size: var(--tamanho-lg);
+  color: var(--cor-primaria-escura);
+}
+
+.cadastro-titulo p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--cor-neutra-media);
+}
+
+/* FORMULÁRIO */
+.formulario {
+  width: 100%;
+}
+
+.formulario fieldset {
+  margin: 0;
+  padding: var(--espaco-5);
+  border: 1px solid var(--cor-neutra-media);
+  border-radius: var(--espaco-1);
+  background-color: var(--cor-neutra-clara);
+}
+
+.formulario legend {
+  padding: 0 var(--espaco-2);
+  font-family: var(--fonte-titulo);
+  font-size: var(--tamanho-md);
+  font-weight: 600;
+  color: var(--cor-primaria-escura);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--espaco-3);
+}
+
+.campo label {
+  margin-bottom: var(--espaco-1);
+  font-weight: 600;
+  color: var(--cor-neutra-escura);
+}
+
+.campo input {
+  width: 100%;
+  padding: var(--espaco-2);
+  border: 1px solid var(--cor-neutra-media);
+  border-radius: var(--espaco-1);
+  background-color: var(--cor-branca);
+  font-family: var(--fonte-texto);
+  font-size: var(--tamanho-sm);
+}
+
+.campo input:focus {
+  outline: 3px solid var(--cor-secundaria-clara);
+  border-color: var(--cor-primaria);
+}
+
+.formulario .btn {
+  border: none;
+  cursor: pointer;
+  font-family: var(--fonte-texto);
+  font-size: var(--tamanho-sm);
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+  margin-top: var(--espaco-6);
+  padding: var(--espaco-4) 8%;
+  background-color: var(--cor-neutra-clara);
+  text-align: center;
+}
+
+footer p {
+  font-size: var(--tamanho-xs);
+  color: var(--cor-neutra-media);
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+/* 1400px */
+@media (max-width: 1400px) {
+
+  .caixa {
+    max-width: 1200px;
+  }
+
+  .iniciativas {
+    max-width: 1200px;
+  }
+}
+
+/* 1200px */
+@media (max-width: 1200px) {
+
+  header {
+    padding: var(--espaco-4) 6%;
+  }
+
+  .caixa {
+    padding: var(--espaco-6) 6%;
+    gap: var(--espaco-5);
+  }
+
+  .sobre {
+    padding: var(--espaco-6) 6%;
+  }
+
+  .caixa-text h2 {
+    font-size: var(--tamanho-lg);
+  }
+
+  .iniciativas {
+    padding: var(--espaco-6) 6%;
+  }
+}
+
+/* 992px */
+@media (max-width: 992px) {
+
+  header {
+    padding: var(--espaco-4) 5%;
+  }
+
+  header > h1 {
+    grid-column: 1 / 8;
+  }
+
+  .logo {
+    grid-column: 1 / 6;
+  }
+
+  nav {
+    grid-column: 8 / 13;
+  }
+
+  .caixa {
+    gap: var(--espaco-4);
+  }
+
+  .caixa-text {
+    grid-column: 1 / 7;
+  }
+
+  .caixa-image {
+    grid-column: 7 / 13;
+  }
+
+  .sobre {
+    gap: var(--espaco-5);
+  }
+
+  .sobre-titulo {
+    grid-column: 1 / 5;
+  }
+
+  .sobre-texto {
+    grid-column: 5 / 13;
+  }
+
+  .card {
+    padding: var(--espaco-3);
+  }
+
+  .card h3 {
+    font-size: var(--tamanho-sm);
+  }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+
+  header {
+    display: flex;
+    flex-direction: column;
+    padding: var(--espaco-4) 5%;
+    text-align: center;
+  }
+
+  header > h1 {
+    white-space: nowrap;
+    font-size: var(--tamanho-lg);
+  }
+
+  .logo {
+    text-align: center;
+  }
+
+  .logo p {
+    text-align: center;
+  }
+
+ .menu-hamburguer {
+  display: block;
+}
+
+nav.menu {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-2);
+}
+
+nav.menu.ativo {
+  display: flex;
+}
+
+  .caixa {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-5);
+    padding: var(--espaco-6) 5%;
+  }
+
+  .caixa-text {
+    grid-column: 1 / 13;
+    text-align: center;
+  }
+
+  .caixa-text p {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .caixa-image {
+    grid-column: 1 / 13;
+  }
+
+  .caixa-image img {
+    max-width: 500px;
+  }
+
+  .sobre {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-4);
+    padding: var(--espaco-6) 5%;
+  }
+
+  .sobre-titulo {
+    grid-column: 1 / 13;
+    text-align: center;
+  }
+
+  .sobre-texto {
+    grid-column: 1 / 13;
+  }
+
+  .iniciativas {
+    padding: var(--espaco-6) 5%;
+  }
+
+  .iniciativas-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .card {
+    grid-column: span 6;
+  }
+
+  .cadastro {
+    padding: var(--espaco-6) 5%;
+  }
+}
+
+/* 576px */
+@media (max-width: 576px) {
+
+  body {
+    font-size: var(--tamanho-sm);
+  }
+
+  header {
+    padding: var(--espaco-3) 5%;
+  }
+
+  header > h1 {
+    font-size: var(--tamanho-md);
+    white-space: nowrap;
+  }
+
+  .logo h1 {
+    font-size: var(--tamanho-md);
+  }
+
+  nav {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--espaco-2);
+  }
+
+  .caixa {
+    padding: var(--espaco-5) 5%;
+  }
+
+  .caixa-text h2 {
+    font-size: var(--tamanho-lg);
+  }
+
+  .iniciativas {
+    padding: var(--espaco-5) 5%;
+  }
+
+  .iniciativas-titulo h2 {
+    font-size: var(--tamanho-md);
+    white-space: nowrap;
+  }
+
+  .iniciativas-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .card {
+    grid-column: 1 / 13;
+  }
+
+  .cadastro {
+    padding: var(--espaco-5) 5%;
+  }
+
+  .cadastro-titulo h2 {
+    font-size: var(--tamanho-md);
+  }
+
+  .formulario fieldset {
+    padding: var(--espaco-3);
+  }
+}
+
+/* 400px */
+@media (max-width: 400px) {
+
+  .logo h1 {
+    font-size: var(--tamanho-md);
+  }
+
+  header > h1 {
+    font-size: var(--tamanho-md);
+    white-space: nowrap;
+  }
+
+  .caixa-text h2 {
+    font-size: var(--tamanho-md);
+  }
+
+  .caixa {
+    padding: var(--espaco-4) 4%;
+  }
+
+  .sobre {
+    padding: var(--espaco-4) 4%;
+  }
+
+  .iniciativas {
+    padding: var(--espaco-4) 4%;
+  }
+
+  .cadastro {
+    padding: var(--espaco-4) 4%;
+  }
+
+  .formulario fieldset {
+    padding: var(--espaco-2);
+  }
+
+  .campo input {
+    padding: var(--espaco-1);
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
