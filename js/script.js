@@ -1,4 +1,7 @@
+
+// ==================================================
 // MENU HAMBÚRGUER
+// ==================================================
 
 const botaoMenu = document.querySelector(".menu-hamburguer");
 const menu = document.querySelector(".menu");
@@ -7,19 +10,32 @@ if (botaoMenu && menu) {
 
     botaoMenu.addEventListener("click", function () {
 
-        menu.classList.toggle("ativo");
+        const menuAberto = menu.classList.toggle("ativo");
+
+        // Informa ao leitor de tela se o menu está aberto ou fechado
+        botaoMenu.setAttribute("aria-expanded", menuAberto);
+
+        // Atualiza a descrição do botão
+        botaoMenu.setAttribute(
+            "aria-label",
+            menuAberto ? "Fechar menu" : "Abrir menu"
+        );
 
     });
 
 }
 
 
+// ==================================================
 // SPA - NAVEGAÇÃO
+// ==================================================
 
 const conteudo = document.getElementById("conteudo");
 
 
+// ==================================================
 // FUNÇÃO PARA CARREGAR AS PÁGINAS
+// ==================================================
 
 function carregarPagina(url) {
 
@@ -50,13 +66,17 @@ function carregarPagina(url) {
 
                 conteudo.innerHTML = novoConteudo.innerHTML;
 
+                // Reconfigura funcionalidades dos elementos
+                // que foram inseridos novamente no DOM
                 carregarProjetos();
-
                 configurarCadastro();
+                configurarMascaras();
+
+                // Move o foco para o conteúdo carregado
+                conteudo.setAttribute("tabindex", "-1");
+                conteudo.focus();
 
             }
-
-            configurarMascaras();
 
         })
 
@@ -64,12 +84,31 @@ function carregarPagina(url) {
 
             console.error("Erro ao carregar a página:", erro);
 
+            if (conteudo) {
+
+                conteudo.innerHTML = `
+                    <section class="mensagem-erro">
+                        <h2>Não foi possível carregar a página</h2>
+                        <p>
+                            Ocorreu um erro ao carregar o conteúdo.
+                            Tente novamente.
+                        </p>
+                    </section>
+                `;
+
+                conteudo.setAttribute("tabindex", "-1");
+                conteudo.focus();
+
+            }
+
         });
 
 }
 
 
+// ==================================================
 // LINKS DO MENU
+// ==================================================
 
 document.addEventListener("click", function (evento) {
 
@@ -89,6 +128,8 @@ document.addEventListener("click", function (evento) {
 
     }
 
+    // Mantém o comportamento normal para links externos,
+    // âncoras e e-mail
     if (
         url.startsWith("http") ||
         url.startsWith("#") ||
@@ -99,6 +140,7 @@ document.addEventListener("click", function (evento) {
 
     }
 
+    // Intercepta somente páginas HTML
     if (!url.endsWith(".html")) {
 
         return;
@@ -111,16 +153,31 @@ document.addEventListener("click", function (evento) {
 
     history.pushState({}, "", url);
 
+    // Fecha o menu depois da navegação
     if (menu) {
 
         menu.classList.remove("ativo");
 
     }
 
+    // Atualiza o estado de acessibilidade do botão
+    if (botaoMenu) {
+
+        botaoMenu.setAttribute("aria-expanded", "false");
+
+        botaoMenu.setAttribute(
+            "aria-label",
+            "Abrir menu"
+        );
+
+    }
+
 });
 
 
-// VOLTAR E AVANÇAR
+// ==================================================
+// VOLTAR E AVANÇAR DO NAVEGADOR
+// ==================================================
 
 window.addEventListener("popstate", function () {
 
@@ -143,11 +200,16 @@ window.addEventListener("popstate", function () {
 });
 
 
+// ==================================================
 // MÁSCARAS
+// ==================================================
 
 function configurarMascaras() {
 
+
+    // ==================================================
     // CPF
+    // ==================================================
 
     const cpf = document.getElementById("cpf");
 
@@ -156,6 +218,9 @@ function configurarMascaras() {
         cpf.addEventListener("input", function () {
 
             let valor = cpf.value.replace(/\D/g, "");
+
+            // Limita o CPF a 11 números
+            valor = valor.substring(0, 11);
 
             valor = valor.replace(
                 /(\d{3})(\d)/,
@@ -179,7 +244,9 @@ function configurarMascaras() {
     }
 
 
+    // ==================================================
     // TELEFONE
+    // ==================================================
 
     const telefone = document.getElementById("telefone");
 
@@ -188,6 +255,9 @@ function configurarMascaras() {
         telefone.addEventListener("input", function () {
 
             let valor = telefone.value.replace(/\D/g, "");
+
+            // Limita o telefone a 11 números
+            valor = valor.substring(0, 11);
 
             valor = valor.replace(
                 /^(\d{2})(\d)/,
@@ -213,7 +283,9 @@ function configurarMascaras() {
 // ==================================================
 
 
+// ==================================================
 // CONFIGURAR O FORMULÁRIO
+// ==================================================
 
 function configurarCadastro() {
 
@@ -227,71 +299,108 @@ function configurarCadastro() {
     }
 
 
+    // ==================================================
     // RECUPERAR DADOS SALVOS
+    // ==================================================
 
     const dadosSalvos =
         localStorage.getItem("cadastro");
 
     if (dadosSalvos) {
 
-        const dadosCadastro =
-            JSON.parse(dadosSalvos);
+        try {
 
-        const nome =
-            document.getElementById("nome");
+            const dadosCadastro =
+                JSON.parse(dadosSalvos);
 
-        const telefone =
-            document.getElementById("telefone");
+            const nome =
+                document.getElementById("nome");
 
-        const cpf =
-            document.getElementById("cpf");
+            const telefone =
+                document.getElementById("telefone");
+
+            const cpf =
+                document.getElementById("cpf");
 
 
-        if (nome) {
+            if (nome) {
 
-            nome.value = dadosCadastro.nome;
+                nome.value = dadosCadastro.nome || "";
 
-        }
+            }
 
-        if (telefone) {
+            if (telefone) {
 
-            telefone.value = dadosCadastro.telefone;
+                telefone.value = dadosCadastro.telefone || "";
 
-        }
+            }
 
-        if (cpf) {
+            if (cpf) {
 
-            cpf.value = dadosCadastro.cpf;
+                cpf.value = dadosCadastro.cpf || "";
+
+            }
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao recuperar os dados do cadastro:",
+                erro
+            );
 
         }
 
     }
 
 
+    // ==================================================
     // SALVAR DADOS
+    // ==================================================
 
     formulario.addEventListener("submit", function (evento) {
 
         evento.preventDefault();
 
+        const campoNome =
+            document.getElementById("nome");
+
+        const campoTelefone =
+            document.getElementById("telefone");
+
+        const campoCpf =
+            document.getElementById("cpf");
+
+
         const dadosCadastro = {
 
-            nome:
-                document.getElementById("nome").value,
+            nome: campoNome ? campoNome.value : "",
 
-            telefone:
-                document.getElementById("telefone").value,
+            telefone: campoTelefone
+                ? campoTelefone.value
+                : "",
 
-            cpf:
-                document.getElementById("cpf").value
+            cpf: campoCpf
+                ? campoCpf.value
+                : ""
 
         };
 
 
-        localStorage.setItem(
-            "cadastro",
-            JSON.stringify(dadosCadastro)
-        );
+        try {
+
+            localStorage.setItem(
+                "cadastro",
+                JSON.stringify(dadosCadastro)
+            );
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao salvar os dados do cadastro:",
+                erro
+            );
+
+        }
 
     });
 
@@ -303,38 +412,46 @@ function configurarCadastro() {
 // ==================================================
 
 
+// ==================================================
 // DADOS DOS PROJETOS
+// ==================================================
 
 const projetos = [
 
     {
         titulo: "Projeto de Apoio à Comunidade",
-        descricao: "Oferecemos apoio às famílias e pessoas em situação de vulnerabilidade, contribuindo para melhorar suas condições de vida.",
+        descricao:
+            "Oferecemos apoio às famílias e pessoas em situação de vulnerabilidade, contribuindo para melhorar suas condições de vida.",
         badge: "Projeto ativo"
     },
 
     {
         titulo: "Projeto de Voluntariado",
-        descricao: "Incentivamos a participação de voluntários em ações sociais, promovendo a colaboração e a solidariedade na comunidade.",
+        descricao:
+            "Incentivamos a participação de voluntários em ações sociais, promovendo a colaboração e a solidariedade na comunidade.",
         badge: "Voluntariado"
     },
 
     {
         titulo: "Campanhas de Doação",
-        descricao: "Realizamos campanhas para arrecadar recursos e materiais destinados às pessoas e famílias atendidas pela ONG.",
+        descricao:
+            "Realizamos campanhas para arrecadar recursos e materiais destinados às pessoas e famílias atendidas pela ONG.",
         badge: "Doação"
     },
 
     {
         titulo: "Outro Projeto",
-        descricao: "Desenvolvemos novas ações sociais de acordo com as necessidades identificadas na comunidade.",
+        descricao:
+            "Desenvolvemos novas ações sociais de acordo com as necessidades identificadas na comunidade.",
         badge: "Projeto ativo"
     }
 
 ];
 
 
+// ==================================================
 // TEMPLATE LITERAL
+// ==================================================
 
 function criarProjeto(projeto) {
 
@@ -353,7 +470,9 @@ function criarProjeto(projeto) {
 }
 
 
+// ==================================================
 // INJETAR OS PROJETOS NO HTML
+// ==================================================
 
 function carregarProjetos() {
 

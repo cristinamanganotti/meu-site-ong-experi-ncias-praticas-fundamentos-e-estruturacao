@@ -122,12 +122,12 @@ nav {
 }
 
 .menu-hamburguer {
-  display: none;
-  border: none;
-  background: none;
-  font-size: 32px;
-  color: var(--cor-primaria-escura);
-  cursor: pointer;
+    display: block;
+    border: none;
+    background: none;
+    font-size: 32px;
+    color: var(--cor-primaria-escura);
+    cursor: pointer;
 }
 
 nav a {
@@ -546,7 +546,7 @@ footer p {
 @media (max-width: 768px) {
 
   header {
-    display: flex;
+    display: block;
     flex-direction: column;
     padding: var(--espaco-4) 5%;
     text-align: center;
