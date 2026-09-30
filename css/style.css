@@ -89,7 +89,7 @@ header {
 }
 
 /* Título "Projetos da ONG" */
-header > h1 {
+header>h1 {
   grid-column: 1 / 8;
   margin: 0;
   color: var(--cor-primaria-escura);
@@ -113,21 +113,37 @@ header > h1 {
 }
 
 /* MENU */
-nav {
-  grid-column: 8 / 13;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--espaco-3);
-}
 
 .menu-hamburguer {
-    display: block;
-    border: none;
-    background: none;
-    font-size: 32px;
-    color: var(--cor-primaria-escura);
-    cursor: pointer;
+  display: block;
+  border: none;
+  background: none;
+  font-size: 32px;
+  color: var(--cor-primaria-escura);
+  cursor: pointer;
+}
+
+.menu-hamburguer:focus {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 3px;
+}
+
+nav.menu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--cor-branco);
+  padding: var(--espaco-2);
+  flex-direction: column;
+  gap: var(--espaco-2);
+  border: 1px solid var(--cor-secundaria);
+  z-index: 10;
+}
+
+nav.menu.ativo {
+  display: flex;
 }
 
 nav a {
@@ -298,7 +314,7 @@ nav a:hover {
   white-space: nowrap;
 }
 
-.iniciativas > img {
+.iniciativas>img {
   width: 100%;
   max-width: 600px;
   height: auto;
@@ -497,7 +513,7 @@ footer p {
     padding: var(--espaco-4) 5%;
   }
 
-  header > h1 {
+  header>h1 {
     grid-column: 1 / 8;
   }
 
@@ -552,7 +568,7 @@ footer p {
     text-align: center;
   }
 
-  header > h1 {
+  header>h1 {
     white-space: nowrap;
     font-size: var(--tamanho-lg);
   }
@@ -565,21 +581,21 @@ footer p {
     text-align: center;
   }
 
- .menu-hamburguer {
-  display: block;
-}
+  .menu-hamburguer {
+    display: block;
+  }
 
-nav.menu {
-  display: none;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--espaco-2);
-}
+  nav.menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-2);
+  }
 
-nav.menu.ativo {
-  display: flex;
-}
+  nav.menu.ativo {
+    display: flex;
+  }
 
   .caixa {
     grid-template-columns: repeat(12, 1fr);
@@ -648,7 +664,7 @@ nav.menu.ativo {
     padding: var(--espaco-3) 5%;
   }
 
-  header > h1 {
+  header>h1 {
     font-size: var(--tamanho-md);
     white-space: nowrap;
   }
@@ -708,7 +724,7 @@ nav.menu.ativo {
     font-size: var(--tamanho-md);
   }
 
-  header > h1 {
+  header>h1 {
     font-size: var(--tamanho-md);
     white-space: nowrap;
   }
