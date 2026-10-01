@@ -1,23 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <link rel="shortcut icon"
-        href="../imagens/favicon-ong.ico"
-        type="image/x-icon">
-
-    <link rel="stylesheet"
-        href="../css/style.css">
+    <link rel="shortcut icon" href="imagens/favicon-ong.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
 
     <title>Projetos - ONG</title>
-
 </head>
 
 <body>
@@ -25,78 +16,99 @@
     <header>
 
         <div class="logo">
-
-            <h1>ONG UNIÃO</h1>
-
+            <h1>Projetos da ONG</h1>
             <p>Juntos, transformando vidas.</p>
-
         </div>
 
-        <button
-            class="menu-hamburguer"
-            aria-label="Abrir menu">
+        <button class="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
             ☰
         </button>
 
         <nav class="menu">
-
-            <a href="index.html">Início</a>
-
-            <a href="projetos.html">Projetos</a>
-
-            <a href="cadastro.html">Cadastro</a>
-
+            <a href="index.html" data-pagina="inicio">Início</a>
+            <a href="projetos.html" data-pagina="projetos">Projetos</a>
+            <a href="cadastro.html" data-pagina="cadastro">Cadastro</a>
         </nav>
 
     </header>
 
+    <main>
 
-    <main id="conteudo">
+        <html id="conteudo">
 
         <section class="iniciativas">
 
             <div class="iniciativas-titulo">
-
                 <span>NOSSAS AÇÕES</span>
-
                 <h2>Nossas Iniciativas</h2>
+                <p>
+                    Conheça as ações que desenvolvemos
+                    para transformar vidas e fortalecer comunidades.
+                </p>
+            </div>
+
+            <div class="iniciativas-grid">
+
+                <article class="iniciativa-card">
+                    <img src="imagens/uniao-pessoas-ong.jpg" alt="Pessoas participando de uma ação social">
+
+                    <div class="iniciativa-texto">
+                        <h3>Ações solidárias</h3>
+                        <p>
+                            Promovemos ações para apoiar famílias
+                            e pessoas em situação de vulnerabilidade,
+                            incentivando a solidariedade e a participação
+                            comunitária.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="iniciativa-card">
+                    <img src="imagens/uniao-ong.jpg" alt="Mãos segurando uma pequena planta">
+
+                    <div class="iniciativa-texto">
+                        <h3>Meio ambiente</h3>
+                        <p>
+                            Incentivamos a conscientização ambiental,
+                            o cuidado com a natureza e a construção
+                            de comunidades mais sustentáveis.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="iniciativa-card">
+                    <img src="imagens/uniao-pessoas-ong.jpg" alt="Grupo de pessoas reunidas em uma iniciativa social">
+
+                    <div class="iniciativa-texto">
+                        <h3>Voluntariado</h3>
+                        <p>
+                            Valorizamos a participação de voluntários
+                            que compartilham conhecimentos, habilidades
+                            e tempo em benefício da comunidade.
+                        </p>
+                    </div>
+                </article>
 
             </div>
 
-
-            <img
-                src="../imagens/uniao-pessoas-ong.jpg"
-                alt="Pessoas reunidas participando de uma ação da ONG">
-
-
-            <div class="iniciativas-grid"></div>
-
-
-            <div class="alerta" role="alert">
-
-                <strong>Informação:</strong>
-
-                Confira nossos projetos e veja como você pode participar.
-
+            <div class="iniciativas-acao">
+                <a href="cadastro.html" class="btn" data-pagina="cadastro">
+                    Seja um voluntário
+                </a>
             </div>
 
         </section>
 
-    </main>
+        </div>
 
+    </div>
 
     <footer>
-
-        <p>
-            &copy; 2026 ONG UNIÃO - Todos os direitos reservados.
-        </p>
-
+        <p>&copy; 2026 ONG UNIÃO - Todos os direitos reservados</p>
     </footer>
 
-
-    <script src="../js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
 </html>
-

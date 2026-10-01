@@ -115,46 +115,54 @@ header>h1 {
 /* MENU */
 
 .menu-hamburguer {
-  display: block;
-  border: none;
-  background: none;
-  font-size: 32px;
-  color: var(--cor-primaria-escura);
-  cursor: pointer;
+    display: block;
+    border: none;
+    background: none;
+    font-size: 32px;
+    color: var(--cor-primaria-escura);
+    cursor: pointer;
 }
 
 .menu-hamburguer:focus {
-  outline: 3px solid var(--cor-secundaria);
-  outline-offset: 3px;
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 3px;
 }
 
 nav.menu {
-  display: none;
-  position: absolute;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--cor-branco);
-  padding: var(--espaco-2);
-  flex-direction: column;
-  gap: var(--espaco-2);
-  border: 1px solid var(--cor-secundaria);
-  z-index: 10;
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+
+    background-color: var(--cor-branco);
+    padding: var(--espaco-2);
+
+    flex-direction: column;
+    gap: var(--espaco-2);
+
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 4px;
+
+    z-index: 10;
 }
 
 nav.menu.ativo {
-  display: flex;
+    display: flex;
+}
+
+.menu-hamburguer:hover + nav.menu {
+    display: flex;
 }
 
 nav a {
-  color: var(--cor-primaria-escura);
-  text-decoration: none;
-  font-weight: 600;
+    color: var(--cor-primaria-escura);
+    text-decoration: none;
+    font-weight: 600;
 }
 
 nav a:hover {
-  color: var(--cor-primaria-clara);
-  text-decoration: underline;
+    color: var(--cor-primaria-clara);
+    text-decoration: underline;
 }
 
 /* =========================
